@@ -1,0 +1,13 @@
+[project]
+name = "transfer-learning-project"
+version = "1.0.0"
+authors = [
+    {name = "Franz Sauerwald", email = "franz.sauerwald@student.hpi.de"},
+    {name = "Orhan Konak", email = "orhan.konak@hpi.de"},
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "tensorflow ~= 2.7",
+    "pandas ~= 1.3.5",
+]

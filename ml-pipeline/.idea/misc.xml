@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (bp)" project-jdk-type="Python SDK" />
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnattendedHostPersistenceState">
+    <option name="openedFilesInfos">
+      <list>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1206" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/scripts/create_dataset.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="619" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/preprocessing/normalization.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="512" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/utils/wandb.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="921" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/scripts/create_csvs.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="62" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/preprocessing/preprocessor.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="772" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/utils/filter_activities.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="1466" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/scripts/train_multi_window_model.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="2000" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/models/JensModel.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="607" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/scripts/train_deep_conv.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/src/models/DeepConvLSTMModel.py" />
+        </OpenedFileInfo>
+      </list>
+    </option>
+  </component>
+</project>
