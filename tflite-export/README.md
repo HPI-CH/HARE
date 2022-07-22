@@ -15,8 +15,9 @@ Opportunity HAR Dataset - "Higher level"-Activity Recognition
   - conda env required
   - in [src/runner.py](./src/runner.py) comment in the experiment- or test-python file you want to run (`import experiments.example_pythonfile` or `import tests.test_example_pythonfile2`)
     - for exporting a tflite model of ResNet after training it on the `SONAR-lab` dataset uncomment `import experiment.export_res_net_exp` in the body of the `if __name__ == "__main__":` condition in [src/runner.py](./src/runner.py)
-  - python3 src/runner.py from inside the repo root folder.
+  - run `python3 src/runner.py` from inside the repo root folder.
     - Note that you will need a data set stored according to the `dataset_path` passed to the DataConfig subclass used in your experiment. For the `export_res_net_exp` you need the SONAR-lab dataset at `../data/lab_data_filtered_without_null` from inside the repo directory. It can be downloaded from [here](https://nextcloud.hpi.de/s/fSKsgwQ2bx2DRWs).
+      The model exported from this experiment will be stored under `saved_experiments`. Before exporting the model from this particular experiment, all non dense layers are frozen for training. This means that running the `train` signature of the exported model will only adapt the dense layers of the model.
 
 ## Environment setup
 
