@@ -148,3 +148,6 @@ src/franz.ipynb
 
 # Mac files
 .DS_STORE
+
+# Files created during runtime
+dataConfigMetadata.json
