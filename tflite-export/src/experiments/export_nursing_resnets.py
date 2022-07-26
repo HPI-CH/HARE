@@ -24,7 +24,7 @@ window_size = 900
 n_classes = data_config.n_activities()
 
 experiment_folder_path = new_saved_experiment_folder(
-    f"export_resnet_exp_leave_rec_out")
+    f"export_nursing_leave_subject_out")
 
 # Load data
 recordings = data_config.load_dataset(

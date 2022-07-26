@@ -51,7 +51,7 @@ window_size = (1000 * target_sampling_rate) // base_sampling_rate
 n_classes = data_config.n_activities()
 
 experiment_folder_path = new_saved_experiment_folder(
-    "export_GaitAnalysisTL_exp")
+    "export_gait_leave_subject_out")
 # define subjects
 subs = [
     "sub_01",

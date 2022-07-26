@@ -40,7 +40,7 @@ settings.init(data_config)
 window_size = 900  # 30 * 3
 n_classes = data_config.n_activities()
 
-experiment_folder_path = new_saved_experiment_folder("transfer_learning_lab")
+experiment_folder_path = new_saved_experiment_folder("transfer_learning_nursing_experiment")
 
 # Load data
 recordings = data_config.load_dataset(features=features)

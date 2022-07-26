@@ -38,7 +38,7 @@ window_size = 900
 n_classes = data_config.n_activities()
 
 experiment_folder_path = new_saved_experiment_folder(
-    "transfer_learning_opportunity_5folds")
+    "transfer_learning_opportunity_experiment")
 
 # Load data
 recordings = data_config.load_dataset()
