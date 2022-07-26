@@ -2,12 +2,8 @@
 Windowizer, Converter, new structure, working version
 """
 import matplotlib.pyplot as plt
-from itertools import product
-from tkinter import N
-from models.RainbowModel import RainbowModel
 import utils.settings as settings
 from evaluation.conf_matrix import create_conf_matrix
-from evaluation.text_metrics import create_text_metrics
 from models.GaitAnalysisTLModel import GaitAnalysisTLModel
 from data_configs.gait_analysis_config import GaitAnalysisConfig
 from models.GaitAnalysisOGModel import GaitAnalysisOGModel
@@ -15,11 +11,7 @@ from models.ResNetModel import ResNetModel
 from models.FranzDeepConvLSTM import FranzDeepConvLSTM
 from utils.data_set import DataSet
 from utils.folder_operations import new_saved_experiment_folder
-from sklearn.utils import shuffle
-from tensorflow.keras.layers import Dense
 from utils.metrics import f1_m
-from utils.grid_search_cv import GridSearchCV
-from sklearn.metrics import classification_report
 import tensorflow as tf
 import numpy as np
 import os
@@ -27,21 +19,15 @@ import os
 # define helper functions
 
 
-def freezeNonDenseLayers(model: RainbowModel):
-    # Set non dense layers to not trainable (freezing them)
-    for layer in model.model.layers:
-        layer.trainable = type(layer) == Dense
-
-
 def map_predictions_to_indexes(y: np.ndarray) -> list:
     """
-    maps the labels to one hot encoding
+    maps the one hot encoded predictions to label indexes
     """
     return list(map(lambda x: np.argmax(x), y))
 
 
 # Init
-data_config = GaitAnalysisConfig(dataset_path="../../data/fatigue_dual_task")
+data_config = GaitAnalysisConfig(dataset_path="./data/gait")
 features = [
     "GYR_X_LF",
     "GYR_Y_LF",
@@ -92,18 +78,6 @@ subs = [
     "sub_17",
     "sub_18",
 ]
-
-# define param grid for grid search
-param_grid = {
-    "window_size": [window_size],
-    "n_features": [len(features)],
-    "n_classes": [n_classes],
-    "batch_size": [32],
-    "n_epochs": [20],
-    "learning_rate": [0.0001],
-    "metrics": ["accuracy"],
-    "stride_size": [window_size, window_size // 2],
-}
 
 
 def two_conv_model(**params) -> "GaitAnalysisTLModel":
@@ -268,8 +242,7 @@ for tl_sub in subs:
         tl_model.model_name += "_tl" + tl_sub
 
         # freeze inner layers of tl model
-        freezeNonDenseLayers(tl_model)
-
+        tl_model.freeze_non_dense_layers()
         result_md += f"###Evaluating tl model\n\n"
 
         # retrain outer layers of tl model

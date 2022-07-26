@@ -115,11 +115,11 @@ class DataSet(list):
                 subjectCount[recording.subject] = 1
         return subjectCount
 
-    def get_people_in_recordings(self) -> "list[str]":
-        people = set()
+    def get_subjects_in_recordings(self) -> "list[str]":
+        subjects = set()
         for recording in self:
-            people.add(recording.subject)
-        return list(people)
+            subjects.add(recording.subject)
+        return list(subjects)
 
     def plot_activities_per_subject(self, dirPath, fileName: str, title: str = ""):
         values = self.count_activities_per_subject()

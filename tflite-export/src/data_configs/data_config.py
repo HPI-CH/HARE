@@ -42,6 +42,8 @@ class DataConfig:
 
     def __init__(self, dataset_path: str):
         self.dataset_path = dataset_path
+        assert os.path.exists(
+            dataset_path), f"Data set at {dataset_path} not existing. Please make sure to download and extract the data sets correctly as described in the Readme of tflite-export."
 
     def load_dataset(self, **kwargs) -> DataSet:
         features = kwargs.get("features", None)

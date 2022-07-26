@@ -2,11 +2,7 @@
 Windowizer, Converter, new structure, working version
 """
 import matplotlib.pyplot as plt
-from itertools import product
-from tkinter import N
-
 from sklearn.model_selection import KFold
-from models.RainbowModel import RainbowModel
 import utils.settings as settings
 from evaluation.conf_matrix import create_conf_matrix
 from data_configs.opportunity_config import OpportunityConfig
@@ -15,11 +11,7 @@ from models.ResNetModel import ResNetModel
 from models.FranzDeepConvLSTM import FranzDeepConvLSTM
 from utils.data_set import DataSet
 from utils.folder_operations import new_saved_experiment_folder
-from sklearn.utils import shuffle
-from tensorflow.keras.layers import Dense
 from utils.metrics import f1_m
-from utils.grid_search_cv import GridSearchCV
-from sklearn.metrics import classification_report
 import tensorflow as tf
 import numpy as np
 import random
@@ -29,27 +21,20 @@ import keras.backend as K
 # define helper functions
 
 
-def freezeNonDenseLayers(model: RainbowModel):
-    # Set non dense layers to not trainable (freezing them)
-    for layer in model.model.layers:
-        layer.trainable = type(layer) == Dense
-
-
 def map_predictions_to_indexes(y: np.ndarray) -> list:
     """
-    maps the labels to one hot encoding
+    maps the one hot encoded predictions to label indexes
     """
     return list(map(lambda x: np.argmax(x), y))
 
+
 # Init
-
-
 data_config = OpportunityConfig(
-    dataset_path="../../data/opportunity-dataset"
+    dataset_path="./data/opportunity"
 )
 
 settings.init(data_config)
-window_size = 900  # 30 * 3
+window_size = 900
 n_classes = data_config.n_activities()
 
 experiment_folder_path = new_saved_experiment_folder(
@@ -65,7 +50,7 @@ random.shuffle(recordings)
 
 
 # get subs
-subs = recordings.get_people_in_recordings()
+subs = recordings.get_subjects_in_recordings()
 n_features = recordings[0].sensor_frame.shape[1]
 # define models
 
@@ -222,8 +207,8 @@ for model_idx, model in enumerate(models):
             tl_model.model_name += "_tl" + tl_sub
 
             # freeze inner layers of tl model
-            freezeNonDenseLayers(tl_model)
-
+            tl_model.freeze_non_dense_layers()
+            tl_model.free
             result_md += f"###Evaluating tl model\n\n"
             result_md += f"{tl_model.model.summary()}\n\n"
 

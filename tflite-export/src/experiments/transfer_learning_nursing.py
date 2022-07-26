@@ -2,11 +2,7 @@
 Windowizer, Converter, new structure, working version
 """
 import matplotlib.pyplot as plt
-from itertools import product
-from tkinter import N
-
 from sklearn.model_selection import KFold
-from models.RainbowModel import RainbowModel
 import utils.settings as settings
 from evaluation.conf_matrix import create_conf_matrix
 from data_configs.sonar_lab_config import SonarLabConfig
@@ -15,10 +11,7 @@ from models.ResNetModel import ResNetModel
 from models.FranzDeepConvLSTM import FranzDeepConvLSTM
 from utils.data_set import DataSet
 from utils.folder_operations import new_saved_experiment_folder
-from sklearn.utils import shuffle
 from utils.metrics import f1_m
-from utils.grid_search_cv import GridSearchCV
-from sklearn.metrics import classification_report
 import tensorflow as tf
 import numpy as np
 import random
@@ -30,7 +23,7 @@ import keras.backend as K
 
 def map_predictions_to_indexes(y: np.ndarray) -> list:
     """
-    maps the labels to one hot encoding
+    maps the one hot encoded predictions to label indexes
     """
     return list(map(lambda x: np.argmax(x), y))
 
@@ -38,7 +31,7 @@ def map_predictions_to_indexes(y: np.ndarray) -> list:
 
 
 data_config = SonarLabConfig(
-    dataset_path="../../data/lab_data_filtered_without_null"
+    dataset_path="./data/nursing"
 )
 features = ["dq_W_LF", "dq_X_LF", "dq_Y_LF", "dq_Z_LF", "dv[1]_LF", "dv[2]_LF", "dv[3]_LF", "Mag_X_LF", "Mag_Y_LF", "Mag_Z_LF", "dq_W_LW", "dq_X_LW", "dq_Y_LW", "dq_Z_LW", "dv[1]_LW", "dv[2]_LW", "dv[3]_LW", "Mag_X_LW", "Mag_Y_LW", "Mag_Z_LW", "dq_W_ST", "dq_X_ST", "dq_Y_ST", "dq_Z_ST", "dv[1]_ST",
             "dv[2]_ST", "dv[3]_ST", "Mag_X_ST", "Mag_Y_ST", "Mag_Z_ST", "dq_W_RW", "dq_X_RW", "dq_Y_RW", "dq_Z_RW", "dv[1]_RW", "dv[2]_RW", "dv[3]_RW", "Mag_X_RW", "Mag_Y_RW", "Mag_Z_RW", "dq_W_RF", "dq_X_RF", "dq_Y_RF", "dq_Z_RF", "dv[1]_RF", "dv[2]_RF", "dv[3]_RF", "Mag_X_RF", "Mag_Y_RF", "Mag_Z_RF"]
@@ -62,7 +55,7 @@ random.shuffle(recordings)
 
 
 # get subs
-subs = recordings.get_people_in_recordings()
+subs = recordings.get_subjects_in_recordings()
 
 # define models
 
@@ -218,7 +211,7 @@ for model_idx, model in enumerate(models):
             tl_model.model_name += "_tl" + tl_sub
 
             # freeze inner layers of tl model
-            tl_model.freezeNonDenseLayers()
+            tl_model.freeze_non_dense_layers()
 
             result_md += f"###Evaluating tl model\n\n"
             result_md += f"{tl_model.model.summary()}\n\n"
