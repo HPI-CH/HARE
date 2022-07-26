@@ -23,11 +23,12 @@ An examplatory command for execution could be `python src/runner.py --dataset nu
 2. Open a terminal
   - Create a new conda environment based on the conda environment specification we worked in [conda_thesis_env.txt](conda_thesis_env.txt): run `conda create --name [REPLACE_WITH_A_NAME] python=3.9.13 --file conda_thesis_env.txt`
   - Activate the newly created environment `conda activate [REPLACE_WITH_A_NAME]`
-  - In the same terminal, follow the steps below to install the dependencies
+  - Install `tflite-support` via pip (it's not available using conda yet): `pip install tflite_support`
+  - You have now installed all necessary dependencies. If this did not work, you can manually install them by following the instructions below. Otherwise continue with downloading the data sets in the data set section.
 
 ### Dependencies
 - Required Packages. Already installed if you followed the instructions in Prerequisites (alternatively, run the commands below in the same order within a conda environment):
-  - tensorflow (2.8.0) `conda install -c conda-forge tensorflow==2.7` (extra steps might be needed for different PCs, but this should work on the lab servers)
+  - tensorflow (2.8.0) `conda install -c conda-forge tensorflow==2.8` (extra steps might be needed for different PCs, but this should work on the lab servers)
   - pandas (any) `conda install pandas`
   - sklearn (any) `conda install -c anaconda scikit-learn`
   - matplotlib (any) `conda install -c conda-forge matplotlib`
