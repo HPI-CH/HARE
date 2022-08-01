@@ -12,7 +12,7 @@ Note that `runner.py` needs to be executed from [this directory](.) to ensure al
 There are two parameters for executing `runner.py`:
 - `--dataset [dataset]` (or `-d [dataset]`) for specifiying the data set you want to execute an action on. `[dataset]` can be one of `gait`, `nursing` or `opportunity`.
 - `--action [dataset]` (or `-a [action]`) for specifying which action you want to execute on the chosen dataset. `[action]` can be one of 
-  - `export`: For each subject `s` of the chosen data set: Train a model on the entire data set excluding data from `s`, then export as tflite model after freezing all non-dense layers. The models exported from this experiment will be stored under `saved_experiments`.
+  - `export`: For each subject `s` of the chosen data set: Train a model on the entire data set excluding data from `s`, then export as tflite model after freezing all non-dense layers. The models exported from this experiment will be stored under `saved_experiments`. For using tflite models within our [app](../xsens_android), copy the tflite model file to `Pixel 6\Internal shared storage\Android\data\sensors_in_paradise.xsens\files\useCases\[USE_CASE]\model.tflite`. `[USE_CASE]` is `default` by default.
   - `experiment`: run personalization experiment for chosen data set as described in thesis
 An examplatory command for execution could be `python src/runner.py --dataset nursing --action export`.
     
