@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "463315943513",
+    "project_id": "sonar-669f4",
+    "storage_bucket": "sonar-669f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463315943513:android:baa77dd4e088f12d383148",
+        "android_client_info": {
+          "package_name": "sensors_in_paradise.xsens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463315943513-fcuv03ff5odoth7upr3leig1bhl0ld95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxWdsQAjaEs7SaxCWbx6jnu4UST91eAqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463315943513-fcuv03ff5odoth7upr3leig1bhl0ld95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

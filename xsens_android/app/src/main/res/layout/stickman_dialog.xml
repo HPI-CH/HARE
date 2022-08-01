@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <sensors_in_paradise.sonar.custom_views.stickman.Render3DView
+        android:id="@+id/stickmanView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:text="x" />
+
+        <SeekBar
+            android:id="@+id/slider_zEuler_stickmanDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="360"
+            android:tag="x" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:text="y" />
+
+        <SeekBar
+            android:id="@+id/slider_yEuler_stickmanDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="360"
+            android:tag="y" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:text="z" />
+
+        <SeekBar
+            android:id="@+id/slider_xEuler_stickmanDialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:tag="z"
+            android:max="360" />
+
+    </LinearLayout>
+
+</LinearLayout>

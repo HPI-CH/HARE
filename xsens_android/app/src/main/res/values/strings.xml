@@ -1,32 +1,31 @@
 <resources>
+    <string name="app_name">XSens - Activity Recognition</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
-    <string name="app_name">Xsens DOT Example</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
 
-    <string name="hint_turn_on_bluetooth">Please turn on the Bluetooth adapter.</string>
-    <string name="hint_allow_location">Please allow location permission to use sensor(s).</string>
-    <string name="hint_connecting">Please wait for the connection result...</string>
-    <string name="hint_syncing_failed">Put sensors as close as possible and try again.</string>
-    <string name="hint_check_connection">Some sensors are disconnected. Please check the connection.</string>
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
 
-    <string name="menu_start_scan">Scan</string>
-    <string name="menu_stop_scan">Stop Scanning</string>
-    <string name="menu_start_streaming">Start</string>
-    <string name="menu_stop_streaming">Stop</string>
-    <string name="menu_measure">Measure</string>
+    <!-- Pose Estimation Preferences -->
+    <string name="default_pose_estimation_model">ThunderI8</string>
 
-    <string name="disconnected">Disconnected</string>
-    <string name="connecting">Connecting</string>
-    <string name="connected">Connected</string>
-    <string name="reconnecting">Reconnecting</string>
-    <string name="batt_state_charging">Charging</string>
-    <string name="syncing">Syncing</string>
-    <string name="mode">Mode:</string>
-    <string name="sync_status">Sync status:</string>
-    <string name="sync_result_success">Success</string>
-    <string name="sync_result_fail">Fail</string>
-    <string name="mode_complete_euler">Complete (Euler)</string>
-    <string name="name">Name:</string>
-    <string name="orientation">Orientation (deg):</string>
-    <string name="free_acc">Free Acceleration (m/s2):</string>
-
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="default_recordings_subdir">ML Prototype Recordings</string>
+    <string name="default_webdav_cloud_url">https://magentacloud.de/remote.php/webdav/</string>
+    <string name="default_webdav_username">120049010000000332523454</string>
+    <string name="missing_model_dialog_message">The current use case does not have a tflite model.
+You can either manually place a tflite model under %1$s via PC or import the default model.</string>
+    <string name="missing_metadata_dialog_message">The tflite model of the current use case does not have the required metadata.</string>
+    <string name="missing_metadata_dialog_title">Invalid tflite model</string>
+    <string name="missing_model_dialog_title">Model missing for this use case!</string>
+    <string name="sensor_tag_prefix_pattern_explanation">In order to use the sensors for on device prediction they need to match the pattern [TAG_PREFIX]-[SENSOR_SET_NUMBER] (regex ^[A-Z]+-\d+$).\n\nExamples for valid sensor tags would be:\nLW-1 (LW for LeftWrist and 1 for sensor set 1)\nRF-3 (RF for RightFoot and 3 for sensor set 3)\nHowever you can give the sensor tag prefix your own semantic (not necessarily body position), it\'s just important that the tag matches the pattern</string>
 </resources>

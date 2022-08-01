@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="backgroundContrast">#505050</color>
+    <color name="slightBackgroundContrast">#eceff1</color>
+    <color name="hardBackgroundContrast">#000</color>
+    <color name="stickmanJoints">#ffab91</color>
+
+</resources>

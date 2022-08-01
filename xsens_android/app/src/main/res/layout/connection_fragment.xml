@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textAlignment="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout_center_activity_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_center_acitivity_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="No devices found." />
+
+        <ProgressBar
+            android:id="@+id/pb_activity_main"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/linearLayout_refresh_connection_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:paddingHorizontal="18dp"
+            android:visibility="gone"
+            android:paddingVertical="10dp"
+            android:clipToPadding="false"
+            android:clipChildren="false">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Scanned devices"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textSize="18sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_refresh_connection_fragment"
+                style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:contentDescription="refreshes connection devices"
+                android:textStyle="bold"
+                app:backgroundTint="@color/slightBackgroundContrast"
+                app:cornerRadius="21dp"
+                app:icon="@drawable/ic_baseline_refresh_24"
+                app:iconTint="?android:textColorSecondary"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                android:padding="3dp"
+                app:iconSize="30dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bluetoothDevices_activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            android:paddingBottom="54dp"
+            android:paddingTop="8dp"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_sync_connection_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:layout_marginHorizontal="16dp"
+        android:text="Sync sensors"
+        app:backgroundTint="@color/colorAccent"
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        app:icon="@drawable/ic_baseline_sync_24">
+
+    </com.google.android.material.button.MaterialButton>
+
+</FrameLayout>

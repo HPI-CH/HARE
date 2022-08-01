@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('Xsens_DOT_SDK_Core_Android_v2021.0-release_stable_b234_r111406.aar'))

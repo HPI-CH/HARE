@@ -1,45 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="NullableNotNullManager">
-    <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
-    <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />
-    <option name="myNullables">
-      <value>
-        <list size="12">
-          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
-          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
-          <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
-          <item index="3" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
-          <item index="4" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
-          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
-          <item index="6" class="java.lang.String" itemvalue="android.annotation.Nullable" />
-          <item index="7" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
-          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
-          <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
-          <item index="10" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
-          <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
-        </list>
-      </value>
-    </option>
-    <option name="myNotNulls">
-      <value>
-        <list size="11">
-          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
-          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
-          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
-          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
-          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
-          <item index="5" class="java.lang.String" itemvalue="android.annotation.NonNull" />
-          <item index="6" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
-          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
-          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
-          <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
-          <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
-        </list>
-      </value>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.281" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.2505" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/drawable/ic_baseline_keyboard_arrow_left_24.xml" value="0.2215" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.2505" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/drawable/ic_baseline_local_fire_department_24.xml" value="0.2215" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/drawable/ic_launcher_background.xml" value="0.281" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/add_label_dialog.xml" value="0.24791666666666667" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/capture_fragment.xml" value="0.1" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/confusion_matrix_dialog.xml" value="0.29936594202898553" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/connection_fragment.xml" value="0.2421875" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/data_fragment.xml" value="0.21149949341438704" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/file_explorer_dialog.xml" value="0.16847826086956522" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/file_explorer_node.xml" value="0.2" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/label_editor.xml" value="0.264" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/label_spinner_item.xml" value="0.33489583333333334" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/labels_spinner_item.xml" value="0.24739583333333334" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/post_labelling_dialog.xml" value="0.2421875" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/prediction.xml" value="0.3859375" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/prediction_fragment.xml" value="0.26510416666666664" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/progress_dialog.xml" value="0.29936594202898553" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/prompt_dialog.xml" value="0.20104166666666667" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/recording.xml" value="0.24739583333333334" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/recording_activity_item.xml" value="0.25885416666666666" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/recording_upload.xml" value="0.25833333333333336" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/sensor_device.xml" value="0.25833333333333336" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/stickman_dialog.xml" value="0.1" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/string_array_dialog.xml" value="0.26510416666666664" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/training_fragment.xml" value="0.25317028985507245" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/training_occasion.xml" value="0.25317028985507245" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/training_screen.xml" value="0.14990942028985507" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/upload_dialog.xml" value="0.25" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/usecase_dialog.xml" value="0.20885416666666667" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/usecase_item.xml" value="0.20885416666666667" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/layout/video_dialog.xml" value="0.3131830601092896" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/menu/activity_main_menu.xml" value="0.2" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.281" />
+        <entry key="..\:/Workspaces/AndroidStudio/android-native-xsens/app/src/main/res/xml/root_preferences.xml" value="0.2932692307692308" />
+      </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

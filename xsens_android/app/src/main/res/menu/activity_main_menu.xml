@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItem_upload_activityMain"
+        android:icon="@drawable/ic_baseline_cloud_upload_24"
+        android:onClick="onFileUploadMenuItemClicked"
+        android:title="Item"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menuItem_orientation_activityMain"
+        android:onClick="onOrientationMenuItemClicked"
+        android:title="Display sensor orientation(s)"
+        android:checkable="true"
+        android:enabled="false"
+        />
+    <item
+        android:id="@+id/menuItem_stickman_activityMain"
+        android:onClick="onStickmanMenuItemClicked"
+        android:title="Stickman"
+        android:visible="false"/>
+    <item
+        android:id="@+id/menuItem_headingReset_activityMain"
+        android:onClick="onHeadingResetMenuItemClicked"
+        android:title="Reset Heading"
+        android:enabled="false"/>
+    <item
+        android:id="@+id/menuItem_headingRevert_activityMain"
+        android:onClick="onHeadingRevertMenuItemClicked"
+        android:title="Revert Heading"
+        android:enabled="false"/>
+
+    <item
+        android:id="@+id/menuItem_useCases_activityMain"
+        android:onClick="onUseCasesMenuItemClicked"
+        android:title="💼 Use Cases" />
+    <item
+        android:id="@+id/menuItem_settings_activityMain"
+        android:onClick="onSettingsMenuItemClicked"
+        android:title="Settings" />
+</menu>

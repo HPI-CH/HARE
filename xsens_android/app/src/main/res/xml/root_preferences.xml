@@ -1,0 +1,142 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- <PreferenceCategory app:title="@string/messages_header">
+
+         <EditTextPreference
+             app:key="signature"
+             app:title="@string/signature_title"
+             app:useSimpleSummaryProvider="true" />
+
+         <ListPreference
+             app:defaultValue="reply"
+             app:entries="@array/reply_entries"
+             app:entryValues="@array/reply_values"
+             app:key="reply"
+             app:title="@string/reply_title"
+             app:useSimpleSummaryProvider="true" />
+
+     </PreferenceCategory>-->
+
+    <PreferenceCategory app:title="Appearance">
+        <SwitchPreferenceCompat
+            android:disableDependentsState="true"
+            app:defaultValue="true"
+            app:key="followSystemTheme"
+            app:summary="If enabled, the app will follow the selected system theme. \nIf disabled, you can choose light or dark mode for this app individually"
+            app:title="Use system theme" />
+
+        <SwitchPreferenceCompat
+            app:dependency="followSystemTheme"
+            app:key="darkMode"
+            app:title="Dark mode" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Developer options">
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="verboseToasts"
+            app:summary="Show semi-important Toasts for debugging"
+            app:title="Verbose Toast logging" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Data recording options">
+        <SwitchPreferenceCompat
+            app:key="playSoundOnRecordingStartAndStop"
+            app:summary="This can be useful to synchronize the sensor recordings with recordings from external cameras etc."
+            app:title="Play start/stop sound" />
+        <SwitchPreferenceCompat
+            app:key="recordWithCamera"
+            app:title="Enable camera on recording screen" />
+        <SwitchPreferenceCompat
+            app:dependency="recordWithCamera"
+            app:key="storeRawCameraVideo"
+            app:summary="Store the raw video from the smartphone camera when recording sensors"
+            app:title="Store camera video " />
+        <ListPreference
+            android:entries="@array/video_quality_labels"
+            android:entryValues="@array/video_quality_values"
+            app:defaultValue="HD"
+            app:dependency="storeRawCameraVideo"
+            app:key="videoRecordingQuality"
+            app:title="Camera recording quality" />
+        <SwitchPreferenceCompat
+            app:dependency="recordWithCamera"
+            app:key="storePoseEstimation"
+            app:summary="Store pose data extracted from video frames when recording."
+            app:title="Store estimated Poses" />
+        <SwitchPreference
+            android:disableDependentsState="true"
+            app:dependency="storePoseEstimation"
+            app:key="useHandPose"
+            app:summaryOff="Body Pose Model selected."
+            app:summaryOn="Hand Pose Model selected."
+            app:title="Use Hand Pose Model" />
+        <ListPreference
+            android:defaultValue="@string/default_pose_estimation_model"
+            android:entries="@array/pose_estimation_model_labels"
+            android:entryValues="@array/pose_estimation_model_values"
+            app:dependency="useHandPose"
+            app:key="poseEstimationModel"
+            app:summary="(Models marked with ⚠ won't run GPU accelerated.)"
+            app:title="Pose Estimation Model" />
+        <SwitchPreference
+            app:key="showPoseBackground"
+            app:summary="Show selected background image for Pose Sequence in Label Editor. Please note that you can only select png files."
+            app:title="Stick Figure Background" />
+        <Preference
+            android:persistent="false"
+            android:selectable="false"
+            android:summary="⚠ The combination of video capture and pose estimation can result in reduced performance."
+            app:enabled="false" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Activity prediction options">
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="storePrediction"
+            app:title="Store prediction as file" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Advanced sensor options">
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="viewHeadingMenuItems"
+            app:summary="Show menu items for resetting or reverting sensor heading. \nHeading reset aligns heading (orientation) outputs among all sensors and with
+the object they are connected to. \nMore detailed information can be found in the Xsens Dot User Manual subsection 4.1.3"
+            app:title="Sensor heading options" />
+        <Preference android:title="XSens Dot User Manual">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.xsens.com/hubfs/Downloads/Manuals/Xsens%20DOT%20User%20Manual.pdf" />
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Cloud">
+        <EditTextPreference
+            android:defaultValue="@string/default_webdav_cloud_url"
+            android:key="cloudBaseURL"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:summary="The base url for the WebDAV cloud you want to upload your files to"
+            android:title="WebDAV URL" />
+        <EditTextPreference
+            android:defaultValue="@string/default_webdav_username"
+            android:key="cloudWebDAVUserName"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:summary="The user name for logging into your WebDAV cloud account"
+            android:title="WebDAV user name" />
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="cloudWebDavToken"
+            android:selectAllOnFocus="false"
+            android:singleLine="true"
+            android:summary="The token for logging into your WebDAV cloud account"
+            android:title="WebDAV token" />
+        <SwitchPreferenceCompat
+            android:id="@+id/switchPreferenceCompat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dependency="storeRawCameraVideo"
+            app:key="uploadCameraVideo"
+            app:summary="Upload the raw Videos that were shot by the camera during recordings"
+            app:title="Upload camera video " />
+    </PreferenceCategory>
+
+</PreferenceScreen>

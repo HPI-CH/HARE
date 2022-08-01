@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SensorDataTrafficIndicator">
+        <attr name="indicatorColor" format="color" />
+        <attr name="pixelsBetween" format="integer" />
+        <attr name="fadeOutDuration" format="integer" />
+        <attr name="idleColor" format="color" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+</resources>

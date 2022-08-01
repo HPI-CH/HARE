@@ -1,31 +1,81 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+import io.gitlab.arturbosch.detekt.Detekt
 
 buildscript {
-    
+    ext.kotlin_version = '1.6.21'
+    ext.moshiVersion = "1.13.0"
     repositories {
         google()
-        jcenter()
-        
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
-        
+        classpath 'com.android.tools.build:gradle:7.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21"
+        classpath 'com.google.gms:google-services:4.3.10'
+
+        // Add the Crashlytics Gradle plugin
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.1'
+
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+plugins {
+    id("io.gitlab.arturbosch.detekt").version("1.18.1")
+}
+
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
+dependencies {
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.16.0"
+}
+
+def kotlinFiles = "**/*.kt"
+def resourceFiles = "**/resources/**"
+def buildFiles = "**/build/**"
+def configFile = files("$rootDir/config/detekt/detekt.yml")
+def projectSource = file(projectDir)
+
+tasks.register("detektBasic", Detekt) {
+    description = "Custom DETEKT build for all modules"
+    parallel = true
+    ignoreFailures = false
+    autoCorrect = false
+    buildUponDefaultConfig = true
+    setSource(projectSource)
+    config.setFrom(configFile)
+    include(kotlinFiles)
+    exclude(resourceFiles, buildFiles)
+    reports {
+        html.enabled = false
+        xml.enabled = false
+        txt.enabled = false
+    }
+}
+
+tasks.register("detektClear", Detekt) {
+    description = "Custom DETEKT build for all modules"
+    parallel = true
+    ignoreFailures = false
+    autoCorrect = true
+    buildUponDefaultConfig = true
+    setSource(projectSource)
+    config.setFrom(configFile)
+    include(kotlinFiles)
+    exclude(resourceFiles, buildFiles)
+    reports {
+        html.enabled = false
+        xml.enabled = false
+        txt.enabled = false
+    }
+}
+
 allprojects {
     repositories {
         google()
-        jcenter()
-
-        // Add local libs repo
-        // If do not add this, when use our SDK, it will show ERROR: Failed to resolve: :XsensDotSdk:
-        flatDir {
-            dirs "libs"
-        }
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 

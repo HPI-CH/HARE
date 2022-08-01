@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    >
+
+    <ViewAnimator
+        android:id="@+id/viewAnimator_confusionMatrices_confusionMatrixDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+    </ViewAnimator>
+    <FrameLayout
+        android:id="@+id/frameLayout_navigation_confusionMatrixDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/button_previous_confusionMatrixDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+            android:contentDescription="Previous" />
+        <TextView
+            android:id="@+id/textView_navigation_confusionMatrixDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/0"
+            android:layout_gravity="center">
+
+        </TextView>
+        <ImageButton
+            android:id="@+id/button_next_confusionMatrixDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24"
+            android:contentDescription="Next" />
+
+    </FrameLayout>
+</LinearLayout>

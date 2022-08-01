@@ -1,13 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/rv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.MainActivity">
+    android:gravity="bottom"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/container"
+    <sensors_in_paradise.sonar.custom_views.SensorDataTrafficIndicatorView
+        android:id="@+id/sensorDataTrafficIndicator_captureFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="8dp"
+        custom:fadeOutDuration="200"
+        custom:idleColor="@color/slightBackgroundContrast"
+        custom:indicatorColor="@color/colorPrimary"
+        custom:textColor="?android:textColorPrimary" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout_sensorOrientation_activityMain"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+    <android.widget.ViewAnimator
+        android:id="@+id/switcher_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <include
+            android:id="@+id/first_activity_main"
+            layout="@layout/connection_fragment" />
+
+        <include
+            android:id="@+id/second_activity_main"
+            layout="@layout/capture_fragment" />
+        <include
+            android:id="@+id/third_activity_main"
+            layout="@layout/data_fragment" />
+        <include
+            android:id="@+id/fourth_activity_main"
+            layout="@layout/prediction_fragment" />
+
+    </android.widget.ViewAnimator>
+    <!--        android:background="@drawable/tablayout_background"-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/slightBackgroundContrast"
+        app:tabIconTint="@color/primary_selector"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextColor="?android:textColorSecondary">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_baseline_bluetooth_connected_24"
+            android:text="Connect" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_baseline_label_24"
+            android:text="Record" />
+
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_baseline_model_training_24"
+            android:text="Data" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_baseline_local_fire_department_24"
+            android:text="Predict" />
+    </com.google.android.material.tabs.TabLayout>
+</LinearLayout>
