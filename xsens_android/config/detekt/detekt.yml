@@ -802,5 +802,6 @@ style:
       - 'android.graphics.*'
       - 'androidx.camera.video.*'
       - 'java.nio.file.*'
+      - 'org.jetbrains.kotlinx.dataframe.*'
       - 'sensors_in_paradise.sonar.*'
       - 'java.io.*'

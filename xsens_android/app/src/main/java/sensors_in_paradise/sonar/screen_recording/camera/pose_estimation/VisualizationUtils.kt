@@ -156,7 +156,6 @@ object VisualizationUtils {
         val inputSize = bitmap?.let { PointF(bitmap.width.toFloat(), bitmap.height.toFloat()) }
         return hands.map { hand ->
             val listBuilder = hand.toBuilder()
-            val x = hand.landmarkList
             val landmarkList = hand.landmarkList.map { landMark ->
                 val landMarkBuilder = landMark.toBuilder()
                 val oldCoordinate = PointF(landMark.x, landMark.y)
@@ -225,14 +224,17 @@ object VisualizationUtils {
         lines: List<Pair<Int, Int>> = listOf(),
         clearColor: Int? = null,
         circleColor: Int = Color.BLACK,
+        circleColors: List<Int?>? = null,
         lineColor: Int = Color.WHITE,
         circleRadius: Float = CIRCLE_RADIUS,
         lineWidth: Float = LINE_WIDTH
     ) {
-        val paintCircle = Paint().apply {
-            strokeWidth = circleRadius
-            color = circleColor
-            style = Paint.Style.FILL_AND_STROKE
+        val paintCircle = { index: Int ->
+            Paint().apply {
+                strokeWidth = circleRadius
+                color = circleColors?.getOrElse(index) { lineColor } ?: circleColor
+                style = Paint.Style.FILL_AND_STROKE
+            }
         }
         val paintLine = Paint().apply {
             strokeWidth = lineWidth
@@ -253,12 +255,12 @@ object VisualizationUtils {
                 canvas.drawLine(pointA.x, pointA.y, pointB.x, pointB.y, paintLine)
             }
 
-            points.forEach { point ->
+            points.forEachIndexed { index, point ->
                 canvas.drawCircle(
                     point.x,
                     point.y,
                     circleRadius,
-                    paintCircle
+                    paintCircle(index)
                 )
             }
         }

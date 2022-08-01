@@ -119,7 +119,11 @@ class TFLiteModel @Throws(InvalidModelMetadata::class) constructor(tfLiteModelFi
         return Pair(accuracy, confusionMatrix)
     }
 
-    fun evaluate(batch: Batch, confusionMatrix: ConfusionMatrix? = null, progressCallback: ((Int) -> Unit)? = null): Float {
+    fun evaluate(
+        batch: Batch,
+        confusionMatrix: ConfusionMatrix? = null,
+        progressCallback: ((Int) -> Unit)? = null
+    ): Float {
 
         val (windows, labels) = batch.compile(this, true, progressCallback)
         val prediction = infer(windows)
@@ -172,17 +176,23 @@ class TFLiteModel @Throws(InvalidModelMetadata::class) constructor(tfLiteModelFi
         }
         val numFeatures = features.size
         if (windows.size != labels.size) {
-            throw java.lang.IllegalArgumentException("Window size ${windows.size} is different to " +
-                    "number of labels ${labels.size}")
+            throw java.lang.IllegalArgumentException(
+                "Window size ${windows.size} is different to " +
+                        "number of labels ${labels.size}"
+            )
         }
         if (windows[0].size != windowSize) {
-            throw java.lang.IllegalArgumentException("Size of provided windows ${windows[0].size} " +
-                    "is different to expected window size: $windowSize")
+            throw java.lang.IllegalArgumentException(
+                "Size of provided windows ${windows[0].size} " +
+                        "is different to expected window size: $windowSize"
+            )
         }
         if (windows[0][0].size != numFeatures) {
-            throw java.lang.IllegalArgumentException("Number of provided features " +
-                    "${windows[0][0].size} inside the windows is different to expected" +
-                    " number of features: $numFeatures")
+            throw java.lang.IllegalArgumentException(
+                "Number of provided features " +
+                        "${windows[0][0].size} inside the windows is different to expected" +
+                        " number of features: $numFeatures"
+            )
         }
         val batchSize = windows.size
         Log.d("Test-TFLiteModel - runTraining", "Running training on batch size $batchSize")
@@ -249,8 +259,10 @@ class TFLiteModel @Throws(InvalidModelMetadata::class) constructor(tfLiteModelFi
         actualLabels: Array<String>
     ): Float {
         if (predictions.size != actualLabels.size) {
-            throw IllegalArgumentException("Size of predictions (${predictions.size}) is " +
-                    "unequals to size of actualLabels (${actualLabels.size})")
+            throw IllegalArgumentException(
+                "Size of predictions (${predictions.size}) is " +
+                        "unequals to size of actualLabels (${actualLabels.size})"
+            )
         }
         var correctPredictions = 0f
         for (i in predictions.indices) {
@@ -268,8 +280,10 @@ class TFLiteModel @Throws(InvalidModelMetadata::class) constructor(tfLiteModelFi
         actualLabels: Array<FloatArray>
     ): Float {
         if (predictions.size != actualLabels.size) {
-            throw IllegalArgumentException("Size of predictions (${predictions.size}) " +
-                    "is unequals to size of actualLabels (${actualLabels.size})")
+            throw IllegalArgumentException(
+                "Size of predictions (${predictions.size}) " +
+                        "is unequals to size of actualLabels (${actualLabels.size})"
+            )
         }
         var correctPredictions = 0f
         for (i in predictions.indices) {

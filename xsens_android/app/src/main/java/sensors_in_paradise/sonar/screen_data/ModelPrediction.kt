@@ -34,7 +34,7 @@ class ModelPrediction(
             })
     }
 
-    @Suppress("TooGenericExceptionCaught")
+    @Suppress("TooGenericExceptionCaught", "LongMethod")
     private fun prepareAndExecutePrediction(recordings: List<Recording>) {
         val progressDialog = ProgressDialog(context)
         ui {

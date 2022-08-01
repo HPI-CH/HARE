@@ -16,6 +16,7 @@ import sensors_in_paradise.sonar.*
 import sensors_in_paradise.sonar.screen_connection.ConnectionInterface
 import sensors_in_paradise.sonar.XSENSArrayList
 import sensors_in_paradise.sonar.screen_recording.camera.CameraManager
+import sensors_in_paradise.sonar.screen_recording.camera.pose_estimation.SensorPlacementEstimator
 import sensors_in_paradise.sonar.util.PreferencesHelper
 import sensors_in_paradise.sonar.use_cases.UseCase
 import java.io.IOException
@@ -36,6 +37,8 @@ class RecordingScreen(
     private lateinit var context: Context
     private lateinit var timer: Chronometer
 
+    private lateinit var captureLayout: LinearLayout
+    private lateinit var sensorPlacementLayout: LinearLayout
     private lateinit var recyclerViewRecordings: RecyclerView
     private lateinit var viewAnimator: ViewAnimator
     private lateinit var recordingsAdapter: RecordingsAdapter
@@ -56,12 +59,17 @@ class RecordingScreen(
         this.context = activity
         this.activity = activity
         timer = activity.findViewById(R.id.timer)
+        captureLayout = activity.findViewById(R.id.linearLayout_capture_captureFragment)
+        sensorPlacementLayout =
+            activity.findViewById(R.id.linearLayout_sensorPlacement_captureFragment)
         mediaPlayerStartSound = MediaPlayer.create(context, R.raw.start_beep)
         mediaPlayerStopSound = MediaPlayer.create(context, R.raw.stop_beep)
         recyclerViewRecordings = activity.findViewById(R.id.recyclerView_recordings_captureFragment)
         val linearLayoutManager = LinearLayoutManager(context)
         recyclerViewRecordings.layoutManager = linearLayoutManager
-        recordingsAdapter = RecordingsAdapter(recordingsManager, context, currentUseCase)
+        val sensorPlacementEstimator = createSensorPlacementEstimator()
+        recordingsAdapter =
+            RecordingsAdapter(recordingsManager, context, currentUseCase, sensorPlacementEstimator)
         recordingsManager.addOnSizeChangedListener { updateNoRecordingsTVVisibility() }
         recyclerViewRecordings.adapter = recordingsAdapter
         viewAnimator = activity.findViewById(R.id.viewSwitcher_captureFragment)
@@ -76,7 +84,7 @@ class RecordingScreen(
 
         loggingManager = LoggingManager(
             context,
-           currentUseCase,
+            currentUseCase,
             devices,
             activity.findViewById(R.id.buttonRecord),
             timer,
@@ -94,6 +102,46 @@ class RecordingScreen(
         cameraManager =
             CameraManager(context, previewView, overlayView)
         updateNoRecordingsTVVisibility()
+    }
+
+    private fun createSensorPlacementEstimator(): SensorPlacementEstimator {
+        val onSelectedRecordingsChanged = { recordings: List<Recording> ->
+            if (recordings.isEmpty()) {
+                recordingsAdapter.isInSelectMode = false
+
+                captureLayout.visibility = View.VISIBLE
+                sensorPlacementLayout.visibility = View.GONE
+            } else {
+                recordingsAdapter.isInSelectMode = true
+
+                captureLayout.visibility = View.INVISIBLE
+                sensorPlacementLayout.visibility = View.VISIBLE
+            }
+        }
+
+        val estimatePlacementButton: Button = activity.findViewById(R.id.button_estimatePlacement_captureFragment)
+        val progressBar: ProgressBar = activity.findViewById(R.id.progressBar_estimatingPlacement_captureFragment)
+        val onRunningToggle = { isRunning: Boolean ->
+            activity.runOnUiThread {
+                if (isRunning) {
+                    estimatePlacementButton.visibility = View.INVISIBLE
+                    progressBar.visibility = View.VISIBLE
+                } else {
+                    estimatePlacementButton.visibility = View.VISIBLE
+                    progressBar.visibility = View.GONE
+                }
+            }
+        }
+
+        return SensorPlacementEstimator(
+            context,
+            estimatePlacementButton,
+            activity.findViewById(R.id.button_lessPositions_captureFragment),
+            activity.findViewById(R.id.button_morePositions_captureFragment),
+            activity.findViewById(R.id.textView_numPositions_captureFragment),
+            activity.findViewById(R.id.textView_numRecordings_captureFragment),
+            onRunningToggle,
+            onSelectedRecordingsChanged)
     }
 
     @Suppress("LongMethod", "ComplexMethod")
@@ -184,7 +232,8 @@ class RecordingScreen(
 
             cameraManager.setOnVideoRecordingFailed { errorKey ->
                 loggingManager.stopLoggingImmediately()
-                Toast.makeText(context, "Video Recording failed: $errorKey", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Video Recording failed: $errorKey", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -253,7 +302,8 @@ class RecordingScreen(
     }
 
     private fun updateNoRecordingsTVVisibility() {
-        noRecordingsCenterTV.visibility = if (recordingsManager.isEmpty()) View.VISIBLE else View.INVISIBLE
+        noRecordingsCenterTV.visibility =
+            if (recordingsManager.isEmpty()) View.VISIBLE else View.INVISIBLE
     }
 
     @SuppressLint("NotifyDataSetChanged")

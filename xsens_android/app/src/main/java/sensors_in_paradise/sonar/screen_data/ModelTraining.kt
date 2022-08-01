@@ -42,7 +42,7 @@ class ModelTraining(
             })
     }
 
-    @Suppress("TooGenericExceptionCaught")
+    @Suppress("TooGenericExceptionCaught", "LongMethod")
     private fun prepareAndExecuteTraining(recordings: List<Recording>, subject: String) {
         progressDialog.show()
 
@@ -120,7 +120,8 @@ class ModelTraining(
                     }
                 }
                 val evaluationDescription =
-                    "\n\nEvaluated on ${validationDataSet.size} recordings of $subject comprised of ${VALIDATION_BATCH_SIZE * validationBatches.size} windows.\n"
+                    "\n\nEvaluated on ${validationDataSet.size} recordings of $subject comprised" +
+                            " of ${VALIDATION_BATCH_SIZE * validationBatches.size} windows.\n"
                 cmBefore.title =
                     "Confusion Matrix before training"
                 cmBefore.description =

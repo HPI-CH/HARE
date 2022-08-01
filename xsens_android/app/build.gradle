@@ -49,6 +49,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11
     }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+        merge 'git.properties'
+    }
     buildFeatures {
         mlModelBinding true
     }
@@ -131,6 +135,7 @@ dependencies {
     implementation 'com.google.mediapipe:hands:latest.release'
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    implementation 'org.jetbrains.kotlinx:dataframe:0.8.0-rc-9'
 
     implementation("org.jcodec:jcodec:0.2.3")
     implementation("org.jcodec:jcodec-android:0.2.2")

@@ -87,6 +87,21 @@ class DataScreen(
             }
         }
 
+        activitiesPieChart.description.isEnabled = false
+
+        exploreFilesBtn.setOnClickListener {
+            FileExplorerDialog(
+                context,
+                currentUseCase.getRecordingsSubDir(),
+                currentUseCase.getRelativePathOfRecordingsSubDir()
+            )
+        }
+        peoplePieChart.description.isEnabled = false
+        initPieChartListeners()
+        filterSwitch.setOnCheckedChangeListener { _, _ -> populateAndAnimateCharts() }
+    }
+
+    private fun initPieChartListeners() {
         activitiesPieChart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
             override fun onValueSelected(e: Entry?, h: Highlight?) {
                 val pieEntry = e as PieEntry?
@@ -106,8 +121,6 @@ class DataScreen(
                 peoplePieChart.isHighlightPerTapEnabled = true
             }
         })
-        activitiesPieChart.description.isEnabled = false
-
         peoplePieChart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
             override fun onValueSelected(e: Entry?, h: Highlight?) {
                 val pieEntry = e as PieEntry?
@@ -127,16 +140,6 @@ class DataScreen(
                 activitiesPieChart.isHighlightPerTapEnabled = true
             }
         })
-        exploreFilesBtn.setOnClickListener {
-            FileExplorerDialog(
-                context,
-                currentUseCase.getRecordingsSubDir(),
-                currentUseCase.getRelativePathOfRecordingsSubDir()
-            )
-        }
-        peoplePieChart.description.isEnabled = false
-
-        filterSwitch.setOnCheckedChangeListener { _, _ -> populateAndAnimateCharts() }
     }
 
     private fun attemptModelInit(): TFLiteModel? {

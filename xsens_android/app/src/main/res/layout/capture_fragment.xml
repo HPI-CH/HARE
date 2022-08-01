@@ -5,195 +5,346 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-   >
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="16dp"
-    android:orientation="vertical">
-
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:text="Activity label"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_activity_captureFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:gravity="center_horizontal"
-                android:hint="Label"
-                android:textAlignment="center"
-                android:inputType="textPersonName"
-                android:paddingVertical="16dp"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:text="Person"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_person_captureFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:ems="10"
-                android:gravity="center_horizontal"
-                android:hint="Person"
-                android:textAlignment="center"
-                android:inputType="textPersonName"
-                android:paddingVertical="16dp"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
-            android:paddingHorizontal="16dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonRecord">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonRecord"
-                style="@style/Widget.MaterialComponents.Button.Icon"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                android:padding="0dp"
-                app:icon="@drawable/ic_baseline_play_arrow_24"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:iconSize="64dp"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
-
-            <Chronometer
-                android:id="@+id/timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:textSize="48dp"
-                android:textColor="?android:textColorHint"/>
-
-        </LinearLayout>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout_captureFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Recordings"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Activities"/>
-
-    </com.google.android.material.tabs.TabLayout>
-    <android.widget.ViewAnimator
-        android:id="@+id/viewSwitcher_captureFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           >
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linearLayout_capture_captureFragment"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/textView_noRecordings_captureFragment"
-                android:lines="2"
-                android:textAlignment="center"
-                android:text="There are no recordings in the selected subdirectory 📂\n of the current use case 💼"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_recordings_captureFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingHorizontal="16dp"
-                app:layoutManager="LinearLayoutManager"/>
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/textView_no_activities_captureFragment"
-                android:text="Start a recording to see labelled activities here"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView_activities_captureFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="16dp"
-                app:layoutManager="LinearLayoutManager"/>
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.camera.view.PreviewView
-                android:id="@+id/previewView_camera_captureFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:visibility="visible">
-            </androidx.camera.view.PreviewView>
 
-            <TextureView
-                android:id="@+id/surfaceView_camera_captureFragment"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:text="Activity label"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_activity_captureFragment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:gravity="center_horizontal"
+                            android:hint="Label"
+                            android:inputType="textPersonName"
+                            android:paddingVertical="16dp"
+                            android:textAlignment="center"
+                            android:textSize="24sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:text="Person"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_person_captureFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:ems="10"
+                            android:gravity="center_horizontal"
+                            android:hint="Person"
+                            android:inputType="textPersonName"
+                            android:paddingVertical="16dp"
+                            android:textAlignment="center"
+                            android:textSize="24sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonRecord">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonRecord"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        app:icon="@drawable/ic_baseline_play_arrow_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="64dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+                    <Chronometer
+                        android:id="@+id/timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:textColor="?android:textColorHint"
+                        android:textSize="48dp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout_captureFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recordings" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Activities" />
+
+                </com.google.android.material.tabs.TabLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_sensorPlacement_captureFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="17dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_lessPositions_captureFragment"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        app:backgroundTint="@color/colorAccent"
+                        app:icon="@drawable/ic_baseline_remove_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="30dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+                    <TextView
+                        android:id="@+id/textView_numPositions_captureFragment"
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_morePositions_captureFragment"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        app:backgroundTint="@color/colorAccent"
+                        app:icon="@drawable/ic_baseline_add_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="30dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/button_estimatePlacement_captureFragment"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center_horizontal"
+                        android:insetLeft="0dp"
+                        android:insetTop="0dp"
+                        android:insetRight="0dp"
+                        android:insetBottom="0dp"
+                        android:padding="0dp"
+                        android:paddingVertical="16dp"
+                        android:visibility="visible"
+                        app:icon="@drawable/ic_baseline_accessibility_24"
+                        app:iconGravity="textStart"
+                        app:iconPadding="0dp"
+                        app:iconSize="50dp"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar_estimatingPlacement_captureFragment"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/textView_numRecordings_captureFragment"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="50dp"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SENSOR PLACEMENT"
+                        android:textAlignment="center"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
         </FrameLayout>
 
-    </android.widget.ViewAnimator>
-</LinearLayout>
+        <android.widget.ViewAnimator
+            android:id="@+id/viewSwitcher_captureFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView_noRecordings_captureFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:lines="2"
+                    android:text="There are no recordings in the selected subdirectory 📂\n of the current use case 💼"
+                    android:textAlignment="center" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_recordings_captureFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="16dp"
+                    app:layoutManager="LinearLayoutManager" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView_no_activities_captureFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Start a recording to see labelled activities here" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_activities_captureFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="10dp"
+                    app:layoutManager="LinearLayoutManager" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.camera.view.PreviewView
+                    android:id="@+id/previewView_camera_captureFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible"></androidx.camera.view.PreviewView>
+
+                <TextureView
+                    android:id="@+id/surfaceView_camera_captureFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
+
+        </android.widget.ViewAnimator>
+    </LinearLayout>
 </LinearLayout>

@@ -65,8 +65,7 @@ class GaitExperimentsTest {
 
     fun screenshotMatrices(
         activity: Activity,
-        matrices: List<ConfusionMatrix>,
-        matrixIndex: Int? = null
+        matrices: List<ConfusionMatrix>
     ) {
         screenshotMatrix(activity, matrices, 0, "A") {
             screenshotMatrix(activity, matrices, 1, "B") {

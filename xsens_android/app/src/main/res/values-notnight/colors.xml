@@ -5,4 +5,7 @@
     <color name="hardBackgroundContrast">#000</color>
     <color name="stickmanJoints">#ffab91</color>
 
+    <color name="colorFocussed">#1E616161</color>
+    <color name="colorSelected">#40616161</color>
+
 </resources>

@@ -132,7 +132,9 @@ class RecordingDataManager(recordingsDir: File) :
             onlyUntrainedRecordings: Boolean = false
         ): Map<String, Long> {
             val result = mutableMapOf<String, Long>()
-            for (recording in recordings.filter { !onlyUntrainedRecordings || !it.metadataStorage.hasBeenUsedForOnDeviceTraining() }) {
+            for (recording in recordings.filter {
+                !onlyUntrainedRecordings || !it.metadataStorage.hasBeenUsedForOnDeviceTraining()
+            }) {
                 val peopleDuration = getPeopleDurations(filterForActivity, recording)
                 peopleDuration.forEach { (name, duration) ->
                     result.merge(
@@ -182,9 +184,10 @@ class RecordingDataManager(recordingsDir: File) :
             val result = ArrayList<RecordingDataFile>(recordings.size)
             for ((index, recording) in recordings.withIndex()) {
                 try {
+                    val shouldGenerateMergedFile =
+                        recording.hasMergedSensorFile() && !regenerateExistingFiles
                     val dataFile =
-                        if (recording.hasMergedSensorFile() && !regenerateExistingFiles)
-                            recording.getMergedSensorFile() else recording.mergeSensorFiles()
+                        if (shouldGenerateMergedFile) recording.getMergedSensorFile() else recording.mergeSensorFiles()
                     result.add(RecordingDataFile(dataFile))
                 } catch (e: Exception) {
                     if (!skipInvalidRecordings) {

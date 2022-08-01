@@ -96,7 +96,7 @@ class PoseEstimationStorageManager(var csvFile: File) {
     }
 
     companion object {
-        private fun getCSVColumns(poseType: Pose): List<String> {
+        fun getCSVColumns(poseType: Pose): List<String> {
             val columns = mutableListOf("TimeStamp")
             when (poseType) {
                 Pose.BodyPose -> {
@@ -198,6 +198,26 @@ class PoseEstimationStorageManager(var csvFile: File) {
             }
         }
 
+        fun getHeaderLineSize(inputFile: String): Int {
+            val fileReader = BufferedReader(FileReader(inputFile))
+            var count = 0
+            var line = fileReader.readLine()
+            while (line != "") {
+                count += 1
+                line = fileReader.readLine()
+            }
+            fileReader.close()
+            return count + 1
+        }
+
+        fun getPoseTypeFromCSV(context: Context, inputFile: String): Pose {
+            val modelType = extractModelTypeFromCSV(context, inputFile)
+            return when (modelType) {
+                HandDetector.MODEL_NAME -> Pose.HandPose
+                else -> Pose.BodyPose
+            }
+        }
+
         fun loadPoseSequenceFromCSV(context: Context, inputFile: String): PoseSequence {
             var startTime = 0L
             var poseType = Pose.BodyPose
@@ -206,10 +226,7 @@ class PoseEstimationStorageManager(var csvFile: File) {
 
             try {
                 startTime = extractStartTimeFromCSV(context, inputFile)
-                poseType = if (
-                    extractModelTypeFromCSV(context, inputFile) == HandDetector.MODEL_NAME
-                ) Pose.HandPose
-                else Pose.BodyPose
+                poseType = getPoseTypeFromCSV(context, inputFile)
 
                 val fileReader = GlobalValues.getCSVHeaderAwareFileReader(File(inputFile))
                 val csvReader = CSVReaderHeaderAware(fileReader)
