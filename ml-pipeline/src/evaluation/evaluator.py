@@ -20,7 +20,7 @@ def standard_evaluation_metrics():
 
 
 def evaluate(model, X_test: np.ndarray, y_test: np.ndarray, evaluation_funcs: list[EvaluationFunction] = None) -> dict[
-    str, Any]:
+        str, Any]:
     if evaluation_funcs is None:
         evaluation_funcs = standard_evaluation_metrics()
 
@@ -70,6 +70,20 @@ def f1_score() -> EvaluationFunction:
         return {
             'f1_score_weighted': f1_score_val,
             'f1_score_macro': f1_score_macro,
+        }
+
+    return fn
+
+
+def recall_score() -> EvaluationFunction:
+    def fn(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, Any]:
+        predictions = np.argmax(y_pred, axis=1)
+        y_true = np.argmax(y_true, axis=1)
+        f1_score_val = metrics.recall_score(y_true, predictions, average="weighted")
+        f1_score_macro = metrics.recall_score(y_true, predictions, average="macro")
+        return {
+            'recall_weighted': f1_score_val,
+            'recall_score_macro': f1_score_macro,
         }
 
     return fn

@@ -40,6 +40,10 @@ class Config:
         "LF", "LW", "ST", "RW", "RF"
     ]
 
+    sonar_column_names = [
+        'Quat_W', 'Quat_X', 'Quat_Y', 'Quat_Z', 'dq_W', 'dq_X', 'dq_Y', 'dq_Z', 'dv[1]', 'dv[2]', 'dv[3]', 'Mag_X', 'Mag_Y', 'Mag_Z'
+    ]
+
     # Same order as opportunity for transfer learning
     sonar_opp_sensor_order = [
         "ST", "RW", "LW", "LF", "RF"
