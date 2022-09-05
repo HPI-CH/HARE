@@ -31,7 +31,7 @@ dataset_path_clustered_labels = os.path.join(Config.dataset_root_dir, 'sonar_15'
 
 
 def run():
-    # TODO: @Orhan Hier hinschreiben, was ausgeführt werden soll
+    # TODO: Write here what to execute
     for idx, model in enumerate(['resnet', 'deepconv', 'convlstm']):
         for jdx, val in enumerate(['kfold', 'lro', 'lwo']):
             if idx == 0 and jdx < 2:
