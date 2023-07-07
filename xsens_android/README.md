@@ -2,7 +2,7 @@
 [![unit-test](https://github.com/Sensors-in-Paradise/android-native-xsens/actions/workflows/unit-test.yml/badge.svg)](https://github.com/Sensors-in-Paradise/android-native-xsens/actions/workflows/unit-test.yml)
 [![instrumented-test](https://github.com/Sensors-in-Paradise/android-native-xsens/actions/workflows/instrumented-test.yml/badge.svg)](https://github.com/Sensors-in-Paradise/android-native-xsens/actions/workflows/instrumented-test.yml)
 
-# SONAR - A Generic HAR App
+# HARE - A Generic HAR App
 
 This is a tool for recording data through Xsens DOT sensors and labeling it when saving on the Device. It is designed to be very generic so that changing the sensors is possible while keeping most of the existing code and functionality. 
 ![image](https://user-images.githubusercontent.com/29177177/185871656-5681deb4-c0e4-4380-925e-a94605fd8aa6.png)
