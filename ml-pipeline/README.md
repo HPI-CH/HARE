@@ -1,4 +1,4 @@
-# Note-Paper Code Submission
+# Code Submission
 
 ## Setup
 Create a virtualenv with the required packages with the provided `environment.yml`
