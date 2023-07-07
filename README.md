@@ -1,7 +1,7 @@
-# sonar
-SensOr-based Nursing Activity Recognition
+# HARE
+Human Activity Recognition Engineering
 
-As the study is composed of different building blocks, it contains different folders for each task. The code is structured as follows:
+As the framework is composed of different building blocks, it contains different folders for each task. The code is structured as follows:
 - **ml-pipeline**
 ```
 Code to reproduce the experiments for a single modality (IMU data)
